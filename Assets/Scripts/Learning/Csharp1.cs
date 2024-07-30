@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,22 +42,10 @@ public class Csharp1 : MonoBehaviour
             });
         }
         #endregion
-        #region Ciallo
-        var cialloObject = new Ciallo();
-        var type = cialloObject.GetType();
-        var members = type.GetMembers();
-        var markedMembers =
-                members.Where(m => m.GetCustomAttributes(typeof(AutoCialloAttribute), false).Length != 0);
-        foreach(var member in markedMembers)
-        {
-            var fieldInfo = markedMembers as FieldInfo;
-            fieldInfo.SetValue(cialloObject, "HelloWorld");
-        }
-        Debug.Log(cialloObject.Text);
-        #endregion
+        
     }
     void TwiceNow(EventArgs eventArgs)
     {
-        Debug.Log(eventArgs.Data);
+        //Debug.Log(eventArgs.Data);
     }
 }

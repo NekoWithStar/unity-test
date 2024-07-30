@@ -53,6 +53,6 @@ public class TestCube : MonoBehaviour
         var cube = new Cube();
         // cube.Excute();  非法
         
-        CommandExecuter.ExecuteCommand(cube); //合法
+        //CommandExecuter.ExecuteCommand(cube); //合法
     }
 }
