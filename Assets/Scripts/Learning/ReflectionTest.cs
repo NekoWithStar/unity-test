@@ -23,13 +23,6 @@ public class ReflectionTest : MonoBehaviour
     }
     private void Start()
     {
-        var ciObj = new Ciallo();
-        var type = ciObj.GetType();
-        var cialloMethodInfo = type.GetMethod("Say");
-        cialloMethodInfo.Invoke(ciObj, null);
-        var clitMethodInfo = type.GetMethod("Good");
-        object num = clitMethodInfo.Invoke(ciObj, new object[] { "gg" });
-
-        Debug.Log(num);
+        
     }
 }
