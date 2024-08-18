@@ -279,6 +279,7 @@ namespace QFramework
 
     public interface IUtility
     {
+        void LoadInt(string key, int value);
     }
 
     #endregion
