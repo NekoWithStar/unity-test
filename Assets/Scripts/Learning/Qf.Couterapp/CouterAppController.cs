@@ -39,6 +39,10 @@ namespace QFramework.Example
             });
 
             UpdateView();
+            this.RegisterEvent<CountChangeEvent>(e =>
+            {
+                UpdateView();
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
         private void UpdateView()
