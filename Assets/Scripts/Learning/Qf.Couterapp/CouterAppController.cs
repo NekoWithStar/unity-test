@@ -14,7 +14,7 @@ namespace QFramework.Example
         public Button BtnAdd;
         public Button BtnSub;
         public TextMeshProUGUI TextCount;
-        private CounterModel mModel;
+        private ICountModel mModel;
 
         public IArchitecture GetArchitecture()
         {
@@ -23,19 +23,15 @@ namespace QFramework.Example
 
         private void Start()
         {
-            mModel = this.GetModel<CounterModel>();
+            mModel = this.GetModel<ICountModel>();
             BtnAdd.onClick.AddListener(() =>
             {
-               this.SendCommand<IncreaseCountCommand>();
-                // 表现逻辑
-                UpdateView();
+                this.SendCommand<IncreaseCountCommand>();
             });
 
             BtnSub.onClick.AddListener(() =>
             {
                 this.SendCommand<DecraseCountCommand>();
-                // 表现逻辑
-                UpdateView();
             });
 
             UpdateView();
@@ -45,9 +41,10 @@ namespace QFramework.Example
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
-        private void UpdateView()
+        public void UpdateView()
         {
             TextCount.text = mModel.Count.ToString();
+            Debug.Log("1");
         }
     }
 }

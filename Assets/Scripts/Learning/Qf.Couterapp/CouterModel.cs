@@ -3,12 +3,16 @@ using UnityEngine;
 
 namespace QFramework.Example
 {
-    public class CounterModel : AbstractModel
+    public interface ICountModel : IModel
     {
-        public BindableProperty<int> Count = new BindableProperty<int>(0);
+        BindableProperty<int> Count {  get; }
+    }
+    public class CounterModel : AbstractModel, ICountModel
+    {
+        public BindableProperty<int> Count { get; } = new BindableProperty<int>(0);
         protected override void OnInit()
         {
-            var mStorage = this.GetUtility<Storage>();
+            var mStorage = this.GetUtility<IStorage>();
             mStorage.LoadInt(nameof(Count.Value));
             Count.Register(e =>
             {
@@ -17,16 +21,21 @@ namespace QFramework.Example
         }
     }
 
-    public class Storage : IUtility
+    public interface IStorage : IUtility
+    {
+        void SaveInt(string key, int value);
+        int LoadInt(string key, int defaultValue = 0);
+    }
+
+    public class Storage : IStorage
     {
         public void SaveInt(string key, int value)
         {
             PlayerPrefs.SetInt(key, value);
         }
-
-        public void LoadInt(string key, int value = 0)
+        public int LoadInt(string key, int defaultValue = 0)
         {
-            PlayerPrefs.SetInt(key, (int)value);    
+            return PlayerPrefs.GetInt(key, defaultValue);
         }
     }
 }

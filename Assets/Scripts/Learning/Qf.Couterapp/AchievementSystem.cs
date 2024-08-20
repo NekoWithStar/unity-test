@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 namespace QFramework.Example
 {
-    public class AchievementSystem : AbstractSystem
+    public interface IAchievementSystem : ISystem
+    {
+        
+    }
+
+
+    public class AchievementSystem : AbstractSystem, IAchievementSystem
     {
         protected override void OnInit()
         {
-            var model = this.GetModel<CounterModel>();
+            var model = this.GetModel<ICountModel>();
             model.Count.Register(
                 e =>
                 {

@@ -4,7 +4,7 @@ namespace QFramework.Example
     {
         protected override void OnExecute()
         {
-            this.GetModel<CounterModel>().Count.Value++;
+            this.GetModel<ICountModel>().Count.Value++;
         }
     }
 }
