@@ -2,7 +2,7 @@
 
 namespace QFramework.Example
 {
-    struct CountChangeEvent
+    public struct CountChangeEvent
     {
     }
 }
