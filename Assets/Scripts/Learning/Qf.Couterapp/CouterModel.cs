@@ -5,24 +5,15 @@ namespace QFramework.Example
 {
     public class CounterModel : AbstractModel
     {
-        private int mCount;
-        private Storage mStorage;
-        public int Count
-        {
-            get => mCount;
-            set
-            {
-                if (mCount != value)
-                {
-                    mCount = value;
-                    mStorage?.SaveInt(nameof(Count), value);
-                }
-            }
-        }
+        public BindableProperty<int> Count = new BindableProperty<int>(0);
         protected override void OnInit()
         {
-            mStorage = this.GetUtility<Storage>();
-            mStorage.LoadInt(nameof(Count));
+            var mStorage = this.GetUtility<Storage>();
+            mStorage.LoadInt(nameof(Count.Value));
+            Count.Register(e =>
+            {
+                mStorage.SaveInt(nameof(Count.Value), Count.Value);    
+            });
         }
     }
 

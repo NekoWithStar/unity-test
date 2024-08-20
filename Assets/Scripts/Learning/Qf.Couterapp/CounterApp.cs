@@ -8,6 +8,7 @@ namespace QFramework.Example
     {
         protected override void Init()
         {
+            this.RegisterSystem(new AchievementSystem());
             this.RegisterUtility(new Storage());
             this.RegisterModel(new CounterModel());
         }

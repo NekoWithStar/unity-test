@@ -5,19 +5,19 @@ namespace QFramework.Example
     {
         protected override void OnInit()
         {
-            var modle = this.GetModel<CounterModel>();
-            this.RegisterEvent<CountChangeEvent>(
+            var model = this.GetModel<CounterModel>();
+            model.Count.Register(
                 e =>
                 {
-                    if (modle.Count == 10)
+                    if (model.Count.Value == 10)
                     {
                         Debug.Log("点击达人成就");
                     }
-                    else if (modle.Count == 20)
+                    else if (model.Count.Value == 20)
                     {
                         Debug.Log("点击大神成就");
                     }
-                    else if (modle.Count == -10)
+                    else if (model.Count.Value == -10)
                     {
                         Debug.Log("点击菜鸟");
                     }
