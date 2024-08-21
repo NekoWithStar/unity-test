@@ -841,12 +841,17 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalRotation: {x: 0.09994938, y: -0.3445021, z: 0.036968715, w: 0.93271744}
   m_LocalPosition: {x: 7.387102, y: 3.3830695, z: -15.822829}
 =======
   m_LocalRotation: {x: 0.21359107, y: -0.12833682, z: 0.02836891, w: 0.9680412}
   m_LocalPosition: {x: 737.69055, y: 751.6316, z: -892.0578}
 >>>>>>> bfdb2b3e56b3f37c4b201ab81e5a1721b62b41fa
+=======
+  m_LocalRotation: {x: 0.21359107, y: -0.12833682, z: 0.02836891, w: 0.9680412}
+  m_LocalPosition: {x: 737.69055, y: 751.6316, z: -892.0578}
+>>>>>>> bfdb2b3 (学习QF)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

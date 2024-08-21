@@ -35,7 +35,11 @@ namespace QFramework.Example
             });
 
             UpdateView();
+<<<<<<< HEAD
             mModel.Count.Register(e =>
+=======
+            this.RegisterEvent<CountChangeEvent>(e =>
+>>>>>>> bfdb2b3 (学习QF)
             {
                 UpdateView();
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
