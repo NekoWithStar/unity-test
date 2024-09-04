@@ -7,9 +7,28 @@ namespace QFramework.Example
 {
 	public partial class Player : ViewController
 	{
-		void Start()
+		void Awake( )
 		{
-			// Code Here
+			ResKit.Init();
 		}
-	}
+
+		private ResLoader mResLoader = null;
+        private void Start()
+        {
+			// 申请一个ResLoader
+			mResLoader = ResLoader.Allocate();
+            // 加载
+            var playerPrefab = mResLoader.LoadSync<GameObject>("Player");
+			// 生成
+			playerPrefab.Instantiate();
+
+        }
+
+        private void OnDestroy()
+        {
+			// 归还
+            mResLoader.Recycle2Cache();
+			mResLoader = null ;
+        }
+    }
 }
