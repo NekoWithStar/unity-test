@@ -1,51 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using Qframework.UIExample;
+using QFramework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class  AutoCialloAttribute : Attribute
-{
-    
-}
-
-
-public class Ciallo
-{
-    [AutoCiallo] public string Text;
-}
 
 public class Csharp1 : MonoBehaviour
 {
-    public class EventArgs
-    {
-        public int Data { get; set; }
-    }
-    public event Action<EventArgs> EventHP;
+    HPUIPanel ui;
     private void Start()
     {
-        #region Event
-        EventHP += TwiceNow;
-        EventHP(new EventArgs()
-        {
-            Data = 0,
-        });
-        EventHP -= TwiceNow;
-        
-        if(EventHP != null)
-        {
-            EventHP.Invoke(new EventArgs()
-            {
-                Data = 20,
-            });
-        }
-        #endregion
-        
+        ui = UIKit.OpenPanel<HPUIPanel>();
+        UIKit.Root.SetResolution(1920, 1080, 0);
     }
-    void TwiceNow(EventArgs eventArgs)
+    private void Update()
     {
-        //Debug.Log(eventArgs.Data);
+        if (ui != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ui.Data.mHP -= 10;
+                ui.HP.text = ui.Data.mHP.ToString();
+            }
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                UIKit.ClosePanel(ui);
+            }
+        }
     }
 }
